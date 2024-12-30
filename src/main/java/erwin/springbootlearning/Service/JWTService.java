@@ -20,6 +20,7 @@ import java.util.function.Function;
 public class JWTService {
 
     private String secretKey = "";
+    private static final long EXPIRATION_TIME = 24 * 60 * 60 * 1000; // 24 hours
 
     public JWTService() {
         try {
@@ -42,7 +43,7 @@ public class JWTService {
                 .add(claims)
                 .subject(username)
                 .issuedAt(new Date(System.currentTimeMillis()))
-                .expiration(new Date(System.currentTimeMillis() + 10L * 24 * 60 * 60 * 1000))
+                .expiration(new Date(System.currentTimeMillis() + EXPIRATION_TIME))
                 .and()
                 .signWith(getKey())
                 .compact();

@@ -16,11 +16,10 @@ import java.util.List;
 
 @RestController
 public class UsersController {
-    private final UserDetailService userDetailService;
     private final UserService userService;
-    public UsersController(UserDetailService userDetailService, UserService userService) {
-        this.userDetailService = userDetailService;
+    public UsersController(UserService userService) {
         this.userService = userService;
+
     }
     @GetMapping("/")
     public String index(HttpServletRequest request) {

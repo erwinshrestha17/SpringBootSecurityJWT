@@ -43,7 +43,6 @@ public class UserService {
                 )
         );
         if (authentication.isAuthenticated()) {
-            //return "Success";
             return jwtService.generateToken(users.getUsername());
         }
         return "Fail";
